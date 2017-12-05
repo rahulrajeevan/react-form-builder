@@ -2,11 +2,9 @@ require('./dom-mock')('<html><body></body></html>');
 
 var jsdom = require('mocha-jsdom');
 var assert = require('assert');
-var React = require('react/addons');
 var ReactDOM = require('react-dom');
 var FormElementsEdit = require('../src/form-elements-edit.jsx').default;
-var TestUtils = React.addons.TestUtils;
-
+var ReactTestUtils = require('react-dom/test-utils'); 
 var staticState = {
   editMode: true,
   editElement: {
@@ -82,7 +80,7 @@ describe('<FormElementsEdit /> Testing static element edit', function() {
     var editElement = ReactDOM.findDOMNode(formElementEdit);
     var contentBox = editElement.getElementsByClassName('public-DraftEditor-content')[0];
 
-    TestUtils.Simulate.beforeInput(contentBox, {data: 'a'});
+    ReactTestUtils.Simulate.beforeInput(contentBox, {data: 'a'});
     assert.equal(formElementEdit.state.dirty, true);
     assert.equal(updatedStaticElement.content, '<div>aPlaceholder Text...</div>\n');
   });
@@ -127,10 +125,10 @@ describe('<FormElementsEdit /> Testing text input element edit', function() {
     var requiredCheckbox = editElement.querySelector('input[type=checkbox]');
 
     var label = editElement.getElementsByClassName('public-DraftEditor-content')[0];
-    TestUtils.Simulate.beforeInput(label, {data: 'a'});
+    ReactTestUtils.Simulate.beforeInput(label, {data: 'a'});
     assert.equal(updatedInputElement.label, '<div>aPlaceholder Label</div>\n');
 
-    TestUtils.Simulate.change(requiredCheckbox, {"target": {"checked": true}});
+    ReactTestUtils.Simulate.change(requiredCheckbox, {"target": {"checked": true}});
     assert.equal(updatedInputElement.required, true);
 
   });

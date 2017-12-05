@@ -2,10 +2,10 @@ require('./dom-mock')('<html><body></body></html>');
 
 var jsdom = require('mocha-jsdom');
 var assert = require('assert');
-var React = require('react/addons');
 var ReactDOM = require('react-dom');
 var GeneratedForm = require('../src/form.jsx').default;
-var TestUtils = React.addons.TestUtils;
+var ReactTestUtils = React.addons.ReactTestUtils;
+
 
 var state = {
   "download_path":"",
@@ -51,7 +51,7 @@ describe('<Form />', function() {
   jsdom({ skipWindowCheck: true });
 
   before('render and locate element', function() {
-    this.generatedForm = TestUtils.renderIntoDocument(
+    this.generatedForm = ReactTestUtils.renderIntoDocument(
       <GeneratedForm download_path="" back_action="" answer_data={{}} form_action="/" form_method="POST" data={state.data} />
     );
 
@@ -80,7 +80,7 @@ describe('<Form />', function() {
     checkbox.checked = true;
 
     // Checking checkbox which is required.
-    TestUtils.Simulate.change(checkbox, {"target": {"checked": true}});
+    ReactTestUtils.Simulate.change(checkbox, {"target": {"checked": true}});
     assert.equal(this.generatedForm.validateForm().length, 1);
 
   });

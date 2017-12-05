@@ -2,16 +2,16 @@ require('./dom-mock')('<html><body></body></html>');
 
 var jsdom = require('mocha-jsdom');
 var assert = require('assert');
-var React = require('react/addons');
 var Toolbar = require('../src/toolbar.jsx').default;
-var TestUtils = React.addons.TestUtils;
+var ReactTestUtils = require('react-dom/test-utils'); 
+
 
 describe('<Toolbar />', function() {
 
   jsdom({ skipWindowCheck: true });
 
   before('render and locate element', function() {
-    this.toolBar = TestUtils.renderIntoDocument(
+    this.toolBar = ReactTestUtils.renderIntoDocument(
       <Toolbar />
     );
 
@@ -19,7 +19,7 @@ describe('<Toolbar />', function() {
   });
 
   it('should contain header', function() {
-    var divText = TestUtils.findRenderedDOMComponentWithTag(this.toolBar, 'h4');  
+    var divText = ReactTestUtils.findRenderedDOMComponentWithTag(this.toolBar, 'h4');  
     assert.equal(divText.textContent, 'Toolbox');
   });
 
@@ -43,7 +43,7 @@ describe('<Toolbar />', function() {
       content: 'Placeholder Text...'
     }];
     
-    this.toolBar = TestUtils.renderIntoDocument(
+    this.toolBar = ReactTestUtils.renderIntoDocument(
       <Toolbar items={items} />
     );
 

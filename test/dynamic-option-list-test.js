@@ -2,10 +2,9 @@ require('./dom-mock')('<html><body></body></html>');
 
 var jsdom = require('mocha-jsdom');
 var assert = require('assert');
-var React = require('react/addons');
 var ReactDOM = require('react-dom');
 var DynamicOptionList = require('../src/dynamic-option-list.jsx').default;
-var TestUtils = React.addons.TestUtils;
+var ReactTestUtils = require('react-dom/test-utils'); 
 
 var state = {
   "id":"3C22A938-FD3C-40FB-AA51-26E5A8A62EE0",
@@ -32,7 +31,7 @@ function updateElement(element) {
 describe('<DynamicListOption />', function() {
   
   before('render and locate element', function() {
-    this.dynamicOptionComponent = TestUtils.renderIntoDocument(
+    this.dynamicOptionComponent = ReactTestUtils.renderIntoDocument(
       <DynamicOptionList 
         showCorrectColumn={true}
         data={previewData} 
@@ -53,7 +52,7 @@ describe('<DynamicListOption />', function() {
     var optionBox = this.dynamicOptionElement.querySelector('input[type=text]');
     optionBox.value = 'Place holder changed';
 
-    TestUtils.Simulate.change(optionBox);
+    ReactTestUtils.Simulate.change(optionBox);
     assert.equal(newState.options[0].text, optionBox.value);
     assert.equal(newState.options[0].value, 'place_holder_changed');
   });
@@ -65,11 +64,11 @@ describe('<DynamicListOption />', function() {
 
     valueBox.value = 'specialsetvalue';
 
-    TestUtils.Simulate.change(valueBox);
+    ReactTestUtils.Simulate.change(valueBox);
     assert.equal(newState.options[0].value, 'specialsetvalue');
 
     labelBox.value = 'New value again';
-    TestUtils.Simulate.change(labelBox);
+    ReactTestUtils.Simulate.change(labelBox);
     assert.equal(newState.options[0].text, labelBox.value);
     assert.equal(newState.options[0].value, 'specialsetvalue');
   });
