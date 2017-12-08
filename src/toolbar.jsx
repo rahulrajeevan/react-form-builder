@@ -52,50 +52,13 @@ export default class Toolbar extends React.Component {
 
   _defaultItems() {
     return [
-      {
-        key: 'Header',
-        name: 'Header Text',
-        icon: 'fa fa-header',
-        static: true,
-        content: 'Placeholder Text...'
-      },
+      
       {
         key: 'Label',
         name: 'Label',
         static: true,
         icon: 'fa fa-font',
         content: 'Placeholder Text...'
-      },
-      {
-        key: 'Paragraph',
-        name: 'Paragraph',
-        static: true,
-        icon: 'fa fa-paragraph',
-        content: 'Placeholder Text...'
-      },
-      {
-        key: 'LineBreak',
-        name: 'Line Break',
-        static: true,
-        icon: 'fa fa-arrows-h'
-      },
-      {
-        key: 'Dropdown',
-        canHaveAnswer: true,
-        name: 'Dropdown',
-        icon: 'fa fa-caret-square-o-down',
-        label: 'Placeholder Label',
-        field_name: 'dropdown_',
-        options: []
-      },
-      {
-        key: 'Tags',
-        canHaveAnswer: true,
-        name: 'Tags',
-        icon: 'fa fa-tags',
-        label: 'Placeholder Label',
-        field_name: 'tags_',
-        options: []
       },
       {
         key: 'Checkboxes',
@@ -138,77 +101,6 @@ export default class Toolbar extends React.Component {
         label: 'Placeholder Label',
         icon: 'fa fa-text-height',
         field_name: 'text_area_'
-      },
-      {
-        key: 'Image',
-        name: 'Image',
-        label: '',
-        icon: 'fa fa-photo',
-        field_name: 'image_',
-        src: ''
-      },
-      {
-        key: 'Rating',
-        canHaveAnswer: true,
-        name: 'Rating',
-        label: 'Placeholder Label',
-        icon: 'fa fa-star',
-        field_name: 'rating_'
-      },
-      {
-        key: 'DatePicker',
-        canDefaultToday: true,
-        canReadOnly: true,
-        name: 'Date',
-        icon: 'fa fa-calendar',
-        label: 'Placeholder Label',
-        field_name: 'date_picker_'
-      },
-      {
-        key: 'Signature',
-        canReadOnly: true,
-        name: 'Signature',
-        icon: 'fa fa-pencil-square-o',
-        label: 'Signature',
-        field_name: 'signature_'
-      },
-      {
-        key: 'HyperLink',
-        name: 'Web site',
-        icon: 'fa fa-link',
-        static: true,
-        content: 'Placeholder Web site link ...',
-        href: 'http://www.example.com'
-      },
-      {
-        key: 'Download',
-        name: 'File Attachment',
-        icon: 'fa fa-file',
-        static: true,
-        content: 'Placeholder file name ...',
-        field_name: 'download_',
-        file_path: '',
-        _href: ''
-      },
-      {
-        key: 'Range',
-        name: 'Range',
-        icon: 'fa fa-sliders',
-        label: 'Placeholder Label',
-        field_name: 'range_',
-        step: 1,
-        default_value: 3,
-        min_value: 1,
-        max_value: 5,
-        min_label: 'Easy',
-        max_label: 'Difficult'
-      },
-      {
-        key: 'Camera',
-        name: 'Camera',
-        icon: 'fa fa-camera',
-        label: 'Placeholder Label',
-        field_name: 'camera_'
       }
     ]
   }

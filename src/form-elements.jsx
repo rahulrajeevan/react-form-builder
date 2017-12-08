@@ -1,9 +1,7 @@
 import React from 'react';
 import HeaderBar from './header-bar';
 import Select from 'react-select';
-import SignaturePad from 'react-signature-pad';
 import SliderNativeBootstrap from 'react-bootstrap-native-slider';
-import ReactDatePicker from 'react-datepicker';
 import StarRating from './star-rating';
 import xss from 'xss';
 import moment from 'moment';
@@ -373,18 +371,7 @@ let DatePicker = React.createClass({
                 value={this.state.value}
                 className = "form-control" />
             }
-            { !iOS && !this.props.data.readOnly &&
-              <ReactDatePicker
-                name={props.name}
-                ref={props.ref}
-                onChange={this.handleChange}
-                selected={this.state.internalValue}
-                todayButton={'Today'}
-                className = "form-control"
-                isClearable={true}
-                dateFormat="MM/DD/YYYY"
-                placeholderText='mm/dd/yyyy' />
-            }
+            
           </div>
         </div>
       </div>
@@ -488,10 +475,6 @@ let Signature = React.createClass({
               <span className="label-required label label-danger">Required</span>
             }
           </label>
-          {this.props.read_only === true && this.props.defaultValue && this.props.defaultValue.length > 0
-            ? (<div><img src={sourceDataURL} /></div>)
-            : (<SignaturePad {...pad_props} />)
-          }
           <input {...props} />
         </div>
       </div>
