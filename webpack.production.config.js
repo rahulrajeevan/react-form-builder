@@ -15,6 +15,7 @@ module.exports = {
     //but get it from a global 'React' variable
     'react': 'react',
     'react-dom': 'react-dom',
+    'react-datepicker': 'react-datepicker',
     'classnames': 'classnames',
     'jquery': 'jquery',
     'bootstrap': 'bootstrap'

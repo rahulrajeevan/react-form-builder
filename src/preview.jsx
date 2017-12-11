@@ -5,7 +5,9 @@
   import React from 'react';
   import ElementStore from './stores/ElementStore';
   import ElementActions from './actions/ElementActions';
-  import {Label,TextInput,NumberInput,TextArea,Checkboxes,RadioButtons} from './form-elements';  
+  import {Header,Paragraph,Label,LineBreak,TextInput,NumberInput,TextArea,Dropdown,Checkboxes,DatePicker,RadioButtons,Image,Rating,Tags,Signature,HyperLink,Download,Camera,Range} from './form-elements';
+  import FormElementsEdit from './form-elements-edit';
+  
   export default class Preview extends React.Component {
   
     constructor(props) {
@@ -101,6 +103,9 @@
       return (
         <div className={classes}>
           <div className="edit-form">
+            { this.props.editElement !== null &&
+              <FormElementsEdit showCorrectColumn={this.props.showCorrectColumn} files={this.props.files} manualEditModeOff={this.props.manualEditModeOff} preview={this} element={this.props.editElement} updateElement={this.updateElement} />
+            }
           </div>
           {/* <Sortable sensitivity={0} key={this.state.data.length} onSort={this.handleSort.bind(this)}> */}
           <div className="Sortable">
@@ -113,12 +118,24 @@
   }
   
   const elementMap = {
+    "Header": Header,
+    "Paragraph": Paragraph,
     "Label": Label,
+    "LineBreak": LineBreak,
     "TextInput": TextInput,
     "NumberInput": NumberInput,
     "TextArea": TextArea,
+    "Dropdown": Dropdown,
     "Checkboxes": Checkboxes,
+    "DatePicker": DatePicker,
     "RadioButtons": RadioButtons,
-  
+    "Rating": Rating,
+    "Image": Image,
+    "Tags": Tags,
+    "Signature": Signature,
+    "HyperLink": HyperLink,
+    "Download": Download,
+    "Camera": Camera,
+    "Range": Range
   }
   Preview.defaultProps = { showCorrectColumn: false, files: [], editMode: false, editElement: null, className: 'react-form-builder-preview pull-left'}
